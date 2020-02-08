@@ -1,15 +1,15 @@
 //Parametros por defecto en las funciones
 //Antes
 function newFunction(name, age, country) {
-	var name = name || 'oscar';
-	var age = age || 32;
-	var country = country || 'CO';
+  var name = name || 'oscar';
+  var age = age || 32;
+  var country = country || 'CO';
 
-	console.log(name, age, country);
+  console.log(name, age, country);
 }
 //Ahora es6
 function newFunction2(name = 'oscar', age = 32, country = 'CO') {
-	console.log(name, age, country);
+  console.log(name, age, country);
 }
 
 newFunction2();
@@ -28,8 +28,8 @@ console.log(epicPhrase2);
 //Multilinea
 //Antes
 let lorem =
-	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n' +
-	'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat';
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n' +
+  'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat';
 
 console.log(lorem);
 //es6
@@ -39,9 +39,9 @@ console.log(lorem2);
 
 //Destructuracion de elementos
 let person = {
-	name: 'Leonardo',
-	age: 30,
-	country: 'CO',
+  name: 'Leonardo',
+  age: 30,
+  country: 'CO',
 };
 console.log(person.name, person.age, person.country);
 
@@ -60,13 +60,13 @@ console.log(education);
 //antes
 //var se establece de manera global en todo el archivo.
 {
-	var hola = 'global'; //variable Global
+  var hola = 'global'; //variable Global
 }
 
 //es6
 //let en este caso solo esta disponible en mi scope o bloque de codigo donde se define.
 {
-	let globalLet = 'global let';
+  let globalLet = 'global let';
 }
 
 //const
@@ -85,24 +85,81 @@ obj = { name: name, age: age };
 obj2 = { name, age }; //=> toma como nombre de llave el mismo de la variable.
 console.log(obj2);
 
-//Arrow function => Funciones anonimas.
+//ARROW FUNCTION => Funciones anonimas.
 const names = [
-	{ name: 'leo', age: 30 },
-	{ name: 'clau', age: 29 },
+  { name: 'leo', age: 30 },
+  { name: 'clau', age: 29 },
 ];
 //Antes
 let listOfNames = names.map(function(item) {
-	console.log(item.name);
+  console.log(item.name);
 });
 //es6
 let listOfNames2 = name.map(item => console.log(item.name));
 
 let listOfNames3 = (name, age) => {
-	//codigo de funcion.
+  //codigo de funcion.
 };
 
 let listOfNames4 = name => {
-	//Este es para cuando solo indico un parametro.
+  //Este es para cuando solo indico un parametro.
 };
 
 const square = num => num * num; //retorno inmediato.
+
+//PROMESAS
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    if (false) {
+      resolve('Hey!');
+    } else {
+      reject('Upss!!!');
+    }
+  });
+};
+
+helloPromise()
+  .then(response => console.log(response))
+  .catch(error => console.log(error));
+
+/******************************************* */
+//CLASES
+
+class calculator {
+  constructor() {
+    this.valueA = 0;
+    this.valueB = 0;
+  }
+
+  sum(valueA, valueB) {
+    this.valueA = valueA;
+    this.valueB = valueB;
+
+    return this.valueA + this.valueB;
+  }
+}
+
+const calc = new calculator();
+
+console.log(calc.sum(4, 3));
+
+//IMPORT
+import hello from './module.js';
+
+hello();
+
+//GENERATORS
+function* helloWorld() {
+  if (true) {
+    yield 'Hello';
+  }
+  if (true) {
+    yield 'World';
+  }
+}
+
+const generatorHello = helloWorld();
+
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
